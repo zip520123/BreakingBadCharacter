@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     convenience init(_ character: MovieCharacter) {
         self.init(nibName: "DetailViewController", bundle: nil)
         self.character = character
-        
     }
     
     override func viewDidLoad() {
@@ -27,6 +26,7 @@ class DetailViewController: UIViewController {
     
     func setupUI() {
         guard let character = character else {return}
+        title = character.name
         photoView.kf.setImage(with: URL(string: character.img))
         var s = "Name: " + character.name
         s.append("\n")
