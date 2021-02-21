@@ -26,9 +26,23 @@ class CharactersViewControllerTests: XCTestCase {
     func test_viewDidLoad_title() {
         XCTAssertEqual(makeSUT().title, "List of Breaking Bad characters")
     }
+    
+    
+    func test_viewDidLoad_detectWhenDidSelectModel() {
+        var isSelect = false
+        let handler : (MovieCharacter) -> Void = {
+            character in
+            isSelect = true
+        }
+        let sut = makeSUT([makeACharacter()], didSelectModelHandler: handler)
+        
+        sut.tableView.select(at: 0)
+        
+        XCTAssertTrue(isSelect)
+    }
 
-    func makeSUT(_ characters: MovieCharacters = []) -> CharactersViewController {
-        let sut = CharactersViewController(characters)
+    func makeSUT(_ characters: MovieCharacters = [], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in} ) -> CharactersViewController {
+        let sut = CharactersViewController(characters, didSelectModelHandler: didSelectModelHandler)
         _ = sut.view
         return sut
     }

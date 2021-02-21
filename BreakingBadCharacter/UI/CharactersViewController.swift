@@ -7,13 +7,16 @@
 
 import UIKit
 import Kingfisher
-class CharactersViewController: UIViewController, UITableViewDataSource {
+class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     private var characters: [MovieCharacter] = []
+    private var didSelectModelHandler: (MovieCharacter)->Void = {_ in}
     let tableView = UITableView()
-    convenience init(_ characters: [MovieCharacter]) {
+    
+    convenience init(_ characters: [MovieCharacter], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in}) {
         self.init()
         self.characters = characters
+        self.didSelectModelHandler = didSelectModelHandler
     }
     
     override func viewDidLoad() {
@@ -21,7 +24,7 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
         setupUI()
         tableView.register(CharacterCell.self)
         tableView.dataSource = self
-        
+        tableView.delegate = self
     }
     
     private func setupUI() {
@@ -59,4 +62,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let character = characters[indexPath.row]
+        didSelectModelHandler(character)
+    }
 }
