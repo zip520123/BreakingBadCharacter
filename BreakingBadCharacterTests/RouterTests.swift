@@ -8,23 +8,6 @@
 import XCTest
 @testable import BreakingBadCharacter
 
-protocol Router {
-    func route(to character: MovieCharacter)
-}
-
-class NavigationControllerRouter: Router {
-    private let navigationController: UINavigationController
-
-    init(_ navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    func route(to character: MovieCharacter) {
-        let detailViewController = DetailViewController(character)
-        navigationController.pushViewController(detailViewController, animated: false)
-    }
-}
-
 
 class RouterTests: XCTestCase {
     
