@@ -25,6 +25,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
     }
     
     private func setupUI() {
+        title = "List of Breaking Bad characters"
+        
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

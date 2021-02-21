@@ -8,6 +8,7 @@
 import XCTest
 @testable import BreakingBadCharacter
 class CharactersViewControllerTests: XCTestCase {
+    
     func test_viewDidLoad_withZeroCharacter() {
         XCTAssertEqual(makeSUT().tableView.numberOfRows(inSection:0), 0)
     }
@@ -20,6 +21,10 @@ class CharactersViewControllerTests: XCTestCase {
     func test_viewDidLoad_renderOneCharacterName() {
         let sut = makeSUT([makeACharacter()])
         XCTAssertEqual((sut.tableView.cell(at: 0) as? CharacterCell)?.nameLabel.text, "Walter White")
+    }
+    
+    func test_viewDidLoad_title() {
+        XCTAssertEqual(makeSUT().title, "List of Breaking Bad characters")
     }
 
     func makeSUT(_ characters: MovieCharacters = []) -> CharactersViewController {
