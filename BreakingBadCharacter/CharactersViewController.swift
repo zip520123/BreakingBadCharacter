@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class CharactersViewController: UIViewController, UITableViewDataSource {
 
     private var characters: [MovieCharacter] = []
@@ -18,7 +18,18 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         tableView.dataSource = self
+        
+    }
+    
+    private func setupUI() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
     }
     
@@ -27,7 +38,14 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = UITableViewCell()
+        let character = characters[indexPath.row]
+        cell.textLabel?.text = character.name
+        if let url = URL(string: character.img) {
+            cell.imageView?.kf.setImage(with: url)
+        }
+        
+        return cell
     }
     
 }
