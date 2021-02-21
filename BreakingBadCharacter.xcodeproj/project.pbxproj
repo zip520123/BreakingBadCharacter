@@ -21,6 +21,7 @@
 		E742303425E2E2F5008595CE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742303325E2E2F5008595CE /* DetailViewController.swift */; };
 		E742303825E2E4DF008595CE /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E742303725E2E4DF008595CE /* DetailViewController.xib */; };
 		E742303C25E2F0CA008595CE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742303B25E2F0CA008595CE /* Router.swift */; };
+		E742304225E2F314008595CE /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742304125E2F314008595CE /* FlowTests.swift */; };
 		E76269F825E2B79D00A04E80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76269F725E2B79D00A04E80 /* AppDelegate.swift */; };
 		E7626A0125E2B79F00A04E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7626A0025E2B79F00A04E80 /* Assets.xcassets */; };
 		E7626A0425E2B79F00A04E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7626A0225E2B79F00A04E80 /* LaunchScreen.storyboard */; };
@@ -55,6 +56,7 @@
 		E742303325E2E2F5008595CE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E742303725E2E4DF008595CE /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		E742303B25E2F0CA008595CE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E742304125E2F314008595CE /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
 		E76269F425E2B79D00A04E80 /* BreakingBadCharacter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingBadCharacter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76269F725E2B79D00A04E80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7626A0025E2B79F00A04E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				E7422FF825E2BCC3008595CE /* Characters.json */,
 				E742300B25E2C5EA008595CE /* CharactersViewControllerTests.swift */,
 				E742302825E2DB9A008595CE /* RouterTests.swift */,
+				E742304125E2F314008595CE /* FlowTests.swift */,
 			);
 			path = BreakingBadCharacterTests;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E742304225E2F314008595CE /* FlowTests.swift in Sources */,
 				E742300C25E2C5EA008595CE /* CharactersViewControllerTests.swift in Sources */,
 				E742302925E2DB9A008595CE /* RouterTests.swift in Sources */,
 				E7422FF325E2BC63008595CE /* ModelTests.swift in Sources */,
