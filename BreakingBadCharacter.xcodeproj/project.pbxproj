@@ -24,6 +24,7 @@
 		E742304225E2F314008595CE /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742304125E2F314008595CE /* FlowTests.swift */; };
 		E742304625E30F76008595CE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742304525E30F76008595CE /* Service.swift */; };
 		E742304A25E30F93008595CE /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742304925E30F93008595CE /* AppFlow.swift */; };
+		E742304F25E31025008595CE /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E7422FF825E2BCC3008595CE /* Characters.json */; };
 		E76269F825E2B79D00A04E80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76269F725E2B79D00A04E80 /* AppDelegate.swift */; };
 		E7626A0125E2B79F00A04E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7626A0025E2B79F00A04E80 /* Assets.xcassets */; };
 		E7626A0425E2B79F00A04E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7626A0225E2B79F00A04E80 /* LaunchScreen.storyboard */; };
@@ -289,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E742304F25E31025008595CE /* Characters.json in Resources */,
 				E7626A0425E2B79F00A04E80 /* LaunchScreen.storyboard in Resources */,
 				E742301825E2D4EA008595CE /* CharacterCell.xib in Resources */,
 				E7626A0125E2B79F00A04E80 /* Assets.xcassets in Resources */,
