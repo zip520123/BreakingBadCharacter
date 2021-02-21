@@ -19,6 +19,7 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        tableView.register(CharacterCell.self)
         tableView.dataSource = self
         
     }
@@ -30,7 +31,6 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,13 +38,22 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(CharacterCell.self)!
         let character = characters[indexPath.row]
-        cell.textLabel?.text = character.name
+        cell.nameLabel.text = character.name
         if let url = URL(string: character.img) {
-            cell.imageView?.kf.setImage(with: url)
+            cell.photoView.kf.setImage(with: url, options: KingfisherOptionsInfo([
+                .transition(.fade(0.2)),
+                .backgroundDecode
+            ]), completionHandler: { (result) in
+                switch result {
+                case let .failure(error):
+                    print(error)
+                default:
+                    break
+                }
+            })
         }
-        
         return cell
     }
     
