@@ -9,9 +9,11 @@ import Foundation
 class AppFlow {
     private let service: Service
     private let dataHandler: (([MovieCharacter], Error?)->Void)
-    init(service: Service, handler: @escaping (([MovieCharacter], Error?)->Void) = {(_,_) in }) {
+    
+    init(service: Service,
+         dataHandler: @escaping (([MovieCharacter], Error?)->Void) = {(_,_) in }) {
         self.service = service
-        self.dataHandler = handler
+        self.dataHandler = dataHandler
     }
     
     func start() {
