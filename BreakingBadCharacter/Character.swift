@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct MovieCharacterElement: Codable {
+struct MovieCharacter: Codable {
     let charID: Int
     let name: String
     let birthday: Birthday
@@ -47,4 +47,4 @@ enum Status: String, Codable {
     case unknown = "Unknown"
 }
 
-typealias MovieCharacter = [MovieCharacterElement]
+typealias MovieCharacters = [MovieCharacter]

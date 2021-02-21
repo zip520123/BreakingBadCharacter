@@ -12,10 +12,7 @@ class ModelTests: XCTestCase {
 
     func test_modelDecode() throws {
         let input = try XCTUnwrap(readString(from: "Characters.json").data(using: .utf8), "Fail to read json file.")
-        let model = try JSONDecoder().decode(MovieCharacter.self, from: input)
-        for item in model {
-            print(item)
-        }
+        let model = try JSONDecoder().decode(MovieCharacters.self, from: input)
         XCTAssertEqual(model[0].name, "Walter White")
     }
     
