@@ -42,10 +42,10 @@ class CharactersViewController: UIViewController, UITableViewDataSource {
         let character = characters[indexPath.row]
         cell.nameLabel.text = character.name
         if let url = URL(string: character.img) {
-            cell.photoView.kf.setImage(with: url, options: KingfisherOptionsInfo([
+            cell.photoView.kf.setImage(with: url, options: [
                 .transition(.fade(0.2)),
                 .backgroundDecode
-            ]), completionHandler: { (result) in
+            ], completionHandler: { (result) in
                 switch result {
                 case let .failure(error):
                     print(error)
