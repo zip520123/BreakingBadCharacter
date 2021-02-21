@@ -108,6 +108,32 @@
 			path = support;
 			sourceTree = "<group>";
 		};
+		E742301F25E2D8FE008595CE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E742300725E2C41A008595CE /* CharactersViewController.swift */,
+				E742301525E2D4EA008595CE /* CharacterCell.swift */,
+				E742301625E2D4EA008595CE /* CharacterCell.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E742302225E2D937008595CE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E742301B25E2D692008595CE /* UITableViewExtension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E742302525E2D9E3008595CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7422FFE25E2C22B008595CE /* Character.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E76269EB25E2B79D00A04E80 = {
 			isa = PBXGroup;
 			children = (
@@ -134,11 +160,9 @@
 				E76269F725E2B79D00A04E80 /* AppDelegate.swift */,
 				E742300425E2C385008595CE /* support */,
 				E7626A0525E2B79F00A04E80 /* Info.plist */,
-				E7422FFE25E2C22B008595CE /* Character.swift */,
-				E742300725E2C41A008595CE /* CharactersViewController.swift */,
-				E742301525E2D4EA008595CE /* CharacterCell.swift */,
-				E742301625E2D4EA008595CE /* CharacterCell.xib */,
-				E742301B25E2D692008595CE /* UITableViewExtension.swift */,
+				E742302525E2D9E3008595CE /* Model */,
+				E742301F25E2D8FE008595CE /* UI */,
+				E742302225E2D937008595CE /* Helper */,
 			);
 			path = BreakingBadCharacter;
 			sourceTree = "<group>";
