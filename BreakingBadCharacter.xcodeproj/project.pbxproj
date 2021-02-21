@@ -19,6 +19,7 @@
 		E742302925E2DB9A008595CE /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742302825E2DB9A008595CE /* RouterTests.swift */; };
 		E742302E25E2DFF1008595CE /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742302D25E2DFF1008595CE /* TableViewHelper.swift */; };
 		E742303425E2E2F5008595CE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742303325E2E2F5008595CE /* DetailViewController.swift */; };
+		E742303825E2E4DF008595CE /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E742303725E2E4DF008595CE /* DetailViewController.xib */; };
 		E76269F825E2B79D00A04E80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76269F725E2B79D00A04E80 /* AppDelegate.swift */; };
 		E7626A0125E2B79F00A04E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7626A0025E2B79F00A04E80 /* Assets.xcassets */; };
 		E7626A0425E2B79F00A04E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7626A0225E2B79F00A04E80 /* LaunchScreen.storyboard */; };
@@ -51,6 +52,7 @@
 		E742302825E2DB9A008595CE /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		E742302D25E2DFF1008595CE /* TableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
 		E742303325E2E2F5008595CE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E742303725E2E4DF008595CE /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		E76269F425E2B79D00A04E80 /* BreakingBadCharacter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingBadCharacter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76269F725E2B79D00A04E80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7626A0025E2B79F00A04E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				E742301525E2D4EA008595CE /* CharacterCell.swift */,
 				E742301625E2D4EA008595CE /* CharacterCell.xib */,
 				E742303325E2E2F5008595CE /* DetailViewController.swift */,
+				E742303725E2E4DF008595CE /* DetailViewController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				E7626A0425E2B79F00A04E80 /* LaunchScreen.storyboard in Resources */,
 				E742301825E2D4EA008595CE /* CharacterCell.xib in Resources */,
 				E7626A0125E2B79F00A04E80 /* Assets.xcassets in Resources */,
+				E742303825E2E4DF008595CE /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

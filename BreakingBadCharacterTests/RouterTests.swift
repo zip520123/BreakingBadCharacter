@@ -9,7 +9,7 @@ import XCTest
 @testable import BreakingBadCharacter
 
 protocol Router {
-    func route(to: MovieCharacter)
+    func route(to character: MovieCharacter)
 }
 
 class NavigationControllerRouter: Router {
@@ -19,8 +19,8 @@ class NavigationControllerRouter: Router {
         self.navigationController = navigationController
     }
     
-    func route(to: MovieCharacter) {
-        let detailViewController = DetailViewController()
+    func route(to character: MovieCharacter) {
+        let detailViewController = DetailViewController(character)
         navigationController.pushViewController(detailViewController, animated: false)
     }
 }
