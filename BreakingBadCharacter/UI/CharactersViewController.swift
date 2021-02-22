@@ -12,7 +12,6 @@ import RxCocoa
 final class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     private var characters: [MovieCharacter] = []
-    private var didSelectModelHandler: (MovieCharacter)->Void = {_ in}
     private var viewModel: CharactersViewModel = CharactersViewModel()
     private let disposeBag = DisposeBag()
     
@@ -20,10 +19,9 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var seasonSegmented: UISegmentedControl!
     
-    convenience init(_ characters: [MovieCharacter], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in}, viewModel: CharactersViewModel) {
+    convenience init(_ characters: [MovieCharacter], viewModel: CharactersViewModel) {
         self.init(nibName: "CharactersViewController", bundle: nil)
         self.characters = characters
-        self.didSelectModelHandler = didSelectModelHandler
         self.viewModel = viewModel
     }
     
@@ -92,7 +90,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.row]
-        didSelectModelHandler(character)
+        viewModel.didSelectCharacter.accept(character)
     }
     
     

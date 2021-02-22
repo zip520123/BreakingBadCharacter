@@ -8,6 +8,7 @@
 import RxCocoa
 
 struct CharactersViewModel {
-    var seasionAppearance: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
-    var searchText: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    let seasionAppearance: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
+    let searchText: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    let didSelectCharacter: PublishRelay<MovieCharacter> = PublishRelay<MovieCharacter>()
 }

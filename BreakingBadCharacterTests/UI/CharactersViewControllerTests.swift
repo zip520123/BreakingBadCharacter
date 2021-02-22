@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import RxSwift
 @testable import BreakingBadCharacter
 class CharactersViewControllerTests: XCTestCase {
     
@@ -30,19 +31,21 @@ class CharactersViewControllerTests: XCTestCase {
     
     func test_viewDidLoad_detectWhenDidSelectModel() {
         var isSelect = false
-        let handler : (MovieCharacter) -> Void = {
-            character in
+        let disposeBag = DisposeBag()
+        let viewModel = CharactersViewModel()
+        
+        viewModel.didSelectCharacter.subscribe { (character) in
             isSelect = true
-        }
-        let sut = makeSUT([makeACharacter()], didSelectModelHandler: handler)
+        }.disposed(by: disposeBag)
+        let sut = makeSUT([makeACharacter()], viewModel: viewModel)
         
         sut.tableView.select(at: 0)
         
         XCTAssertTrue(isSelect)
     }
 
-    func makeSUT(_ characters: MovieCharacters = [], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in} ) -> CharactersViewController {
-        let sut = CharactersViewController(characters, didSelectModelHandler: didSelectModelHandler, viewModel: CharactersViewModel())
+    func makeSUT(_ characters: MovieCharacters = [], viewModel: CharactersViewModel = CharactersViewModel() ) -> CharactersViewController {
+        let sut = CharactersViewController(characters, viewModel: viewModel)
         _ = sut.view
         return sut
     }
