@@ -63,7 +63,7 @@ class AppFlow {
                 
                 
                 if query == "" {
-                    self.currCharacters.accept(self.characters)
+                    charactersFilterByName += allCharacters
                 } else {
                     for character in allCharacters {
                         if character.name.contains(query)  {
