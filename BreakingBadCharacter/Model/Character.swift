@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct MovieCharacter: Codable {
+struct MovieCharacter: Codable, Equatable {
     let charID: Int
     let name: String
     let birthday: Birthday

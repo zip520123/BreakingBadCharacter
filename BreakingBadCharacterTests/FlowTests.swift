@@ -28,5 +28,19 @@ class FlowTests: XCTestCase {
         sut.start()
         XCTAssertTrue(isLoaded)
     }
-
+    
+    func test_charactersInitState() {
+        let sut = AppFlow(service: MockService(), charactersViewModel: CharactersViewModel())
+        sut.start()
+        
+        XCTAssertEqual(sut.currCharacters.value, [])
+    }
+    
+    func test_charactersLoadFromLocal() {
+        let sut = AppFlow(service: LocalService(), charactersViewModel: CharactersViewModel())
+        sut.start()
+        XCTAssertNotEqual(sut.currCharacters.value.count, 0)
+    }
+    
+    
 }
