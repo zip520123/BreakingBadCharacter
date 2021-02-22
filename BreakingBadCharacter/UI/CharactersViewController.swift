@@ -38,7 +38,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     }
     
     @objc private func segmentsChanges(segmented: UISegmentedControl) {
-        print(segmented.selectedSegmentIndex) 
+        viewModel.seasionAppearance.accept(segmented.selectedSegmentIndex)
     }
     
     private func rxBinding() {
