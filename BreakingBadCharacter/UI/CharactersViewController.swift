@@ -18,6 +18,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var seasonSegmented: UISegmentedControl!
     
     convenience init(_ characters: [MovieCharacter], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in}, viewModel: CharactersViewModel) {
         self.init(nibName: "CharactersViewController", bundle: nil)
@@ -33,6 +34,11 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
         tableView.register(CharacterCell.self)
         tableView.dataSource = self
         tableView.delegate = self
+        seasonSegmented.addTarget(self, action: #selector(segmentsChanges), for: .valueChanged)
+    }
+    
+    @objc private func segmentsChanges(segmented: UISegmentedControl) {
+        print(segmented.selectedSegmentIndex) 
     }
     
     private func rxBinding() {
@@ -88,4 +94,6 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
         let character = characters[indexPath.row]
         didSelectModelHandler(character)
     }
+    
+    
 }

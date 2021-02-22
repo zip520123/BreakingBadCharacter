@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharactersViewController" customModule="BreakingBadCharacter" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="laM-G0-i1b" id="xnb-ZE-pc5"/>
+                <outlet property="seasonSegmented" destination="GLq-wz-hGu" id="O6n-Y1-AVQ"/>
                 <outlet property="tableView" destination="P2E-Ln-HoC" id="21E-2L-1CD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="03M-7m-2aT"/>
             </connections>
@@ -21,9 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLq-wz-hGu">
-                    <rect key="frame" x="0.0" y="88" width="414" height="32"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLq-wz-hGu">
+                    <rect key="frame" x="0.0" y="100" width="414" height="32"/>
                     <segments>
                         <segment title="Season All"/>
                         <segment title="1"/>
@@ -33,19 +33,29 @@
                         <segment title="5"/>
                     </segments>
                 </segmentedControl>
-                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="laM-G0-i1b">
-                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="laM-G0-i1b">
+                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="P2E-Ln-HoC">
-                    <rect key="frame" x="0.0" y="127" width="414" height="751"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P2E-Ln-HoC">
+                    <rect key="frame" x="0.0" y="131" width="414" height="765"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="P2E-Ln-HoC" secondAttribute="bottom" id="6AO-32-ela"/>
+                <constraint firstItem="laM-G0-i1b" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="AXY-1I-LYj"/>
+                <constraint firstItem="P2E-Ln-HoC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="PZk-pz-dt4"/>
+                <constraint firstItem="GLq-wz-hGu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UzE-A9-rlq"/>
+                <constraint firstItem="P2E-Ln-HoC" firstAttribute="top" secondItem="GLq-wz-hGu" secondAttribute="bottom" id="a8U-ri-nEC"/>
+                <constraint firstItem="P2E-Ln-HoC" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gWv-0h-Sb9"/>
+                <constraint firstItem="GLq-wz-hGu" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="p7T-iF-JGd"/>
+                <constraint firstItem="GLq-wz-hGu" firstAttribute="top" secondItem="laM-G0-i1b" secondAttribute="bottom" id="wOG-Ue-6zj"/>
+                <constraint firstItem="laM-G0-i1b" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zEE-Xh-X8f"/>
+                <constraint firstItem="laM-G0-i1b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zKu-97-MRV"/>
+            </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="110.49107142857143"/>
         </view>
     </objects>
