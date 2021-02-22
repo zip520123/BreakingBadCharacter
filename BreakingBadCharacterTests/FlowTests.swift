@@ -19,11 +19,14 @@ class FlowTests: XCTestCase {
 
     func test_getDataWhenDataFetchCompletion() {
         var isLoaded = false
-        
-        let sut = AppFlow(service: MockService()) { (characters, error) in
+        let viewModel = CharactersViewModel()
+        let service = MockService()
+        let sut = AppFlow(service: service, charactersViewModel: viewModel)
+        service.loadData { (_, _) in
             isLoaded = true
         }
         sut.start()
         XCTAssertTrue(isLoaded)
     }
+
 }
