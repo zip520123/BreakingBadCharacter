@@ -11,17 +11,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var appFlow: AppFlow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = UIViewController()
-        vc.view.backgroundColor = .gray
-        window?.rootViewController = vc
+        
+        appFlow = AppFlow(service: ApiService(), charactersViewModel: CharactersViewModel())
+        window?.rootViewController = appFlow?.navigationController
         window?.makeKeyAndVisible()
         
+        appFlow?.start()
         return true
     }
 
-
+    
 }
 
