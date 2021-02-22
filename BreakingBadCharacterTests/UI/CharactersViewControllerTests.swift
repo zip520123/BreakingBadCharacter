@@ -42,7 +42,7 @@ class CharactersViewControllerTests: XCTestCase {
     }
 
     func makeSUT(_ characters: MovieCharacters = [], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in} ) -> CharactersViewController {
-        let sut = CharactersViewController(characters, didSelectModelHandler: didSelectModelHandler)
+        let sut = CharactersViewController(characters, didSelectModelHandler: didSelectModelHandler, viewModel: CharactersViewModel())
         _ = sut.view
         return sut
     }
