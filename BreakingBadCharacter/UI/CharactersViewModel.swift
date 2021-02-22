@@ -8,5 +8,6 @@
 import RxCocoa
 
 struct CharactersViewModel {
+    var seasionAppearance: BehaviorRelay<Set<Int>> = BehaviorRelay<Set<Int>>(value: Set())
     var searchText: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
 }
