@@ -24,22 +24,21 @@ class CharactersViewModelTests: XCTestCase {
     
     func test_initSeasonState() {
         let sut = CharactersViewModel()
-        let stateSpy = StateSpy(sut)
-        XCTAssertEqual([sut.seasionAppearance.value], stateSpy.seasonSets)
+        
+        XCTAssertEqual([sut.seasionAppearance.value], [0])
     }
 
     func test_seasonChangeState() {
         let sut = CharactersViewModel()
         let stateSpy = StateSpy(sut)
-        var set = sut.seasionAppearance.value
-        set.insert(1)
-        sut.seasionAppearance.accept(set)
-        XCTAssertEqual([Set(), Set([1])], stateSpy.seasonSets)
+        
+        sut.seasionAppearance.accept(1)
+        XCTAssertEqual(stateSpy.seasonSets, [0,1])
     }
     
     private class StateSpy {
         private(set) var texts: [String] = []
-        private(set) var seasonSets: [Set<Int>] = []
+        private(set) var seasonSets: [Int] = []
         private let disposeBag = DisposeBag()
         init(_ vm: CharactersViewModel) {
             vm.searchText.subscribe { [weak self] (s) in
