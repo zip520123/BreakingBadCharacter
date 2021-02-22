@@ -6,8 +6,12 @@
 //
 
 import UIKit
-
+import Kingfisher
 class CharacterCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photoView: UIImageView!
+    
+    override func prepareForReuse() {
+        photoView.kf.cancelDownloadTask()
+    }
 }
