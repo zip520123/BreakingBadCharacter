@@ -150,7 +150,6 @@
 		E742301F25E2D8FE008595CE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E723040525E3C76E0046ADBE /* CharactersViewModel.swift */,
 				E742300725E2C41A008595CE /* CharactersViewController.swift */,
 				E72303EA25E3AE780046ADBE /* CharactersViewController.xib */,
 				E742301525E2D4EA008595CE /* CharacterCell.swift */,
@@ -222,6 +221,7 @@
 				E742304525E30F76008595CE /* Service.swift */,
 				E742304925E30F93008595CE /* AppFlow.swift */,
 				E76269F725E2B79D00A04E80 /* AppDelegate.swift */,
+				E723040525E3C76E0046ADBE /* CharactersViewModel.swift */,
 				E742303B25E2F0CA008595CE /* Router.swift */,
 				E742302525E2D9E3008595CE /* Model */,
 				E742301F25E2D8FE008595CE /* UI */,
