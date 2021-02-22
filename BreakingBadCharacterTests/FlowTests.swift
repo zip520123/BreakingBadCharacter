@@ -42,5 +42,28 @@ class FlowTests: XCTestCase {
         XCTAssertNotEqual(sut.currCharacters.value.count, 0)
     }
     
+    func test_charactersSearchEmptyTest_getAllCharacters() {
+        let viewModel = CharactersViewModel()
+        
+        let sut = AppFlow(service: LocalService(), charactersViewModel: viewModel)
+        sut.start()
+        let allCharactersCount = sut.currCharacters.value.count
+        viewModel.searchText.accept("")
+        
+        XCTAssertEqual(sut.currCharacters.value.count, allCharactersCount)
+    }
     
+    func test_charactersSearchSomeText_getAllCharactersWhosNameContainsText() {
+        let viewModel = CharactersViewModel()
+
+        let sut = AppFlow(service: LocalService(), charactersViewModel: viewModel)
+        sut.start()
+
+        viewModel.searchText.accept("Walter")
+        
+        for character in sut.currCharacters.value {
+            XCTAssertTrue(character.name.contains("Walter"))
+        }
+
+    }
 }

@@ -7,10 +7,12 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class AppFlow {
     private let service: Service
     private var characters = [MovieCharacter]()
+    let currCharacters: BehaviorRelay<[MovieCharacter]> = BehaviorRelay<[MovieCharacter]>(value: [])
     private let disposeBag = DisposeBag()
     
     private let charactersViewController: CharactersViewController
@@ -33,7 +35,7 @@ class AppFlow {
             return
         }
         self.characters = characters
-        self.charactersViewController.update(characters: characters)
+        currCharacters.accept(characters)
     }
     
     func start() {
@@ -48,7 +50,7 @@ class AppFlow {
     }
     
     
-    func rxbinding() {
+    private func rxbinding() {
         
         charactersViewModel.searchText
             .distinctUntilChanged()
@@ -56,8 +58,7 @@ class AppFlow {
             .subscribe(onNext: { [weak self] (query, season) in
                 guard let self = self else {return}
                 if query == "" {
-                    
-                    self.charactersViewController.update(characters: self.characters)
+                    self.currCharacters.accept(self.characters)
                 } else {
                     var characters = [MovieCharacter]()
                     for character in self.characters {
@@ -65,10 +66,18 @@ class AppFlow {
                             characters.append(character)
                         }
                     }
-                    self.charactersViewController.update(characters: characters)
+                    self.currCharacters.accept(characters)
                 }
             })
             .disposed(by: disposeBag)
         
+        currCharacters.subscribe {[weak self] (characters) in
+            self?.charactersViewController.update(characters: characters)
+        }.disposed(by: disposeBag)
+        
+        charactersViewModel.didSelectCharacter.subscribe {[weak self] (character) in
+            self?.didSelectModelHandler(character)
+        }.disposed(by: disposeBag)
+
     }
 }
