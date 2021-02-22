@@ -11,10 +11,12 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
 
     private var characters: [MovieCharacter] = []
     private var didSelectModelHandler: (MovieCharacter)->Void = {_ in}
-    let tableView = UITableView()
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     convenience init(_ characters: [MovieCharacter], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in}) {
-        self.init()
+        self.init(nibName: "CharactersViewController", bundle: nil)
         self.characters = characters
         self.didSelectModelHandler = didSelectModelHandler
     }
@@ -30,12 +32,6 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
     private func setupUI() {
         title = "List of Breaking Bad characters"
         
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
