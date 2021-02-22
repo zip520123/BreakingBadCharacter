@@ -127,13 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				E742302C25E2DFD8008595CE /* helper */,
+				E72303F925E3C26E0046ADBE /* CharactersViewModelTests.swift */,
 				E7422FF225E2BC63008595CE /* ModelTests.swift */,
 				E7422FEA25E2BC39008595CE /* Info.plist */,
 				E7422FF825E2BCC3008595CE /* Characters.json */,
 				E742302825E2DB9A008595CE /* RouterTests.swift */,
 				E742304125E2F314008595CE /* FlowTests.swift */,
 				E742306025E324C5008595CE /* UI */,
-				E72303F925E3C26E0046ADBE /* CharactersViewModelTests.swift */,
 			);
 			path = BreakingBadCharacterTests;
 			sourceTree = "<group>";
@@ -219,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				E7626A0525E2B79F00A04E80 /* Info.plist */,
+				E742304525E30F76008595CE /* Service.swift */,
 				E742304925E30F93008595CE /* AppFlow.swift */,
 				E76269F725E2B79D00A04E80 /* AppDelegate.swift */,
 				E742303B25E2F0CA008595CE /* Router.swift */,
@@ -226,7 +227,6 @@
 				E742301F25E2D8FE008595CE /* UI */,
 				E742300425E2C385008595CE /* support */,
 				E742302225E2D937008595CE /* Helper */,
-				E742304525E30F76008595CE /* Service.swift */,
 			);
 			path = BreakingBadCharacter;
 			sourceTree = "<group>";
