@@ -19,9 +19,8 @@ class FlowTests: XCTestCase {
 
     func test_getDataWhenDataFetchCompletion() {
         var isLoaded = false
-        let viewModel = CharactersViewModel()
         let service = MockService()
-        let sut = AppFlow(service: service, charactersViewModel: viewModel)
+        let sut = makeSUT(service: service)
         service.loadData { (_, _) in
             isLoaded = true
         }
@@ -30,23 +29,20 @@ class FlowTests: XCTestCase {
     }
     
     func test_charactersInitState() {
-        let sut = AppFlow(service: MockService(), charactersViewModel: CharactersViewModel())
-        sut.start()
-        
+        let sut = makeSUT()
         XCTAssertEqual(sut.currCharacters.value, [])
     }
     
     func test_charactersLoadFromLocal() {
-        let sut = AppFlow(service: LocalService(), charactersViewModel: CharactersViewModel())
-        sut.start()
+        let sut = makeSUT(service: LocalService())
         XCTAssertNotEqual(sut.currCharacters.value.count, 0)
     }
     
     func test_charactersSearchEmptyTest_getAllCharacters() {
         let viewModel = CharactersViewModel()
         
-        let sut = AppFlow(service: LocalService(), charactersViewModel: viewModel)
-        sut.start()
+        let sut = makeSUT(service: LocalService(), viewModel: viewModel)
+        
         let allCharactersCount = sut.currCharacters.value.count
         viewModel.searchText.accept("")
         
@@ -56,9 +52,7 @@ class FlowTests: XCTestCase {
     func test_charactersSearchSomeText_getAllCharactersWhosNameContainsText() {
         let viewModel = CharactersViewModel()
 
-        let sut = AppFlow(service: LocalService(), charactersViewModel: viewModel)
-        sut.start()
-
+        let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Walter")
         
         for character in sut.currCharacters.value {
@@ -66,4 +60,11 @@ class FlowTests: XCTestCase {
         }
 
     }
+    
+    func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = CharactersViewModel()) -> AppFlow {
+        let sut = AppFlow(service: service, charactersViewModel: viewModel)
+        sut.start()
+        return sut
+    }
+    
 }
