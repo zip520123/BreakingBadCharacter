@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F58500057FAA10AB16349D6 /* Pods_BreakingBadCharacterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EB17E42DCEA107C552FF4C /* Pods_BreakingBadCharacterTests.framework */; };
 		5C9DE3909ACE5CA8246AB8A1 /* Pods_BreakingBadCharacter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35159851C094A721407F8BE5 /* Pods_BreakingBadCharacter.framework */; };
 		E72303EB25E3AE780046ADBE /* CharactersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72303EA25E3AE780046ADBE /* CharactersViewController.xib */; };
+		E72303FA25E3C26E0046ADBE /* CharactersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72303F925E3C26E0046ADBE /* CharactersViewModelTests.swift */; };
+		E723040625E3C76E0046ADBE /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E723040525E3C76E0046ADBE /* CharactersViewModel.swift */; };
 		E7422FF325E2BC63008595CE /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7422FF225E2BC63008595CE /* ModelTests.swift */; };
 		E7422FF925E2BCC3008595CE /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = E7422FF825E2BCC3008595CE /* Characters.json */; };
 		E7422FFF25E2C22B008595CE /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7422FFE25E2C22B008595CE /* Character.swift */; };
@@ -46,8 +49,12 @@
 /* Begin PBXFileReference section */
 		3384A4961540A566CA4C7E95 /* Pods-BreakingBadCharacter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBadCharacter.release.xcconfig"; path = "Target Support Files/Pods-BreakingBadCharacter/Pods-BreakingBadCharacter.release.xcconfig"; sourceTree = "<group>"; };
 		35159851C094A721407F8BE5 /* Pods_BreakingBadCharacter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakingBadCharacter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38EB17E42DCEA107C552FF4C /* Pods_BreakingBadCharacterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakingBadCharacterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64EC070292D2F1A7CFC4FB88 /* Pods-BreakingBadCharacterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBadCharacterTests.release.xcconfig"; path = "Target Support Files/Pods-BreakingBadCharacterTests/Pods-BreakingBadCharacterTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E8C418C92C13D286D1AA2F2 /* Pods-BreakingBadCharacter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBadCharacter.debug.xcconfig"; path = "Target Support Files/Pods-BreakingBadCharacter/Pods-BreakingBadCharacter.debug.xcconfig"; sourceTree = "<group>"; };
 		E72303EA25E3AE780046ADBE /* CharactersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharactersViewController.xib; sourceTree = "<group>"; };
+		E72303F925E3C26E0046ADBE /* CharactersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelTests.swift; sourceTree = "<group>"; };
+		E723040525E3C76E0046ADBE /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		E7422FE625E2BC39008595CE /* BreakingBadCharacterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreakingBadCharacterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7422FEA25E2BC39008595CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7422FF225E2BC63008595CE /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
@@ -68,6 +75,7 @@
 		E742304925E30F93008595CE /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		E742305825E3239E008595CE /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		E742305C25E32427008595CE /* CharacterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterHelper.swift; sourceTree = "<group>"; };
+		E7452814D47B73F9775CE620 /* Pods-BreakingBadCharacterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBadCharacterTests.debug.xcconfig"; path = "Target Support Files/Pods-BreakingBadCharacterTests/Pods-BreakingBadCharacterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E76269F425E2B79D00A04E80 /* BreakingBadCharacter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingBadCharacter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76269F725E2B79D00A04E80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7626A0025E2B79F00A04E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F58500057FAA10AB16349D6 /* Pods_BreakingBadCharacterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				35159851C094A721407F8BE5 /* Pods_BreakingBadCharacter.framework */,
+				38EB17E42DCEA107C552FF4C /* Pods_BreakingBadCharacterTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,6 +117,8 @@
 			children = (
 				6E8C418C92C13D286D1AA2F2 /* Pods-BreakingBadCharacter.debug.xcconfig */,
 				3384A4961540A566CA4C7E95 /* Pods-BreakingBadCharacter.release.xcconfig */,
+				E7452814D47B73F9775CE620 /* Pods-BreakingBadCharacterTests.debug.xcconfig */,
+				64EC070292D2F1A7CFC4FB88 /* Pods-BreakingBadCharacterTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -121,6 +133,7 @@
 				E742302825E2DB9A008595CE /* RouterTests.swift */,
 				E742304125E2F314008595CE /* FlowTests.swift */,
 				E742306025E324C5008595CE /* UI */,
+				E72303F925E3C26E0046ADBE /* CharactersViewModelTests.swift */,
 			);
 			path = BreakingBadCharacterTests;
 			sourceTree = "<group>";
@@ -137,6 +150,7 @@
 		E742301F25E2D8FE008595CE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E723040525E3C76E0046ADBE /* CharactersViewModel.swift */,
 				E742300725E2C41A008595CE /* CharactersViewController.swift */,
 				E72303EA25E3AE780046ADBE /* CharactersViewController.xib */,
 				E742301525E2D4EA008595CE /* CharacterCell.swift */,
@@ -224,6 +238,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7422FED25E2BC39008595CE /* Build configuration list for PBXNativeTarget "BreakingBadCharacterTests" */;
 			buildPhases = (
+				427D333C046618192064ED72 /* [CP] Check Pods Manifest.lock */,
 				E7422FE225E2BC39008595CE /* Sources */,
 				E7422FE325E2BC39008595CE /* Frameworks */,
 				E7422FE425E2BC39008595CE /* Resources */,
@@ -341,6 +356,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		427D333C046618192064ED72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BreakingBadCharacterTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DD8FACCBD6177A9984980D49 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72303FA25E3C26E0046ADBE /* CharactersViewModelTests.swift in Sources */,
 				E742304225E2F314008595CE /* FlowTests.swift in Sources */,
 				E742300C25E2C5EA008595CE /* CharactersViewControllerTests.swift in Sources */,
 				E742302925E2DB9A008595CE /* RouterTests.swift in Sources */,
@@ -383,6 +421,7 @@
 				E742304A25E30F93008595CE /* AppFlow.swift in Sources */,
 				E742304625E30F76008595CE /* Service.swift in Sources */,
 				E742301C25E2D692008595CE /* UITableViewExtension.swift in Sources */,
+				E723040625E3C76E0046ADBE /* CharactersViewModel.swift in Sources */,
 				E7422FFF25E2C22B008595CE /* Character.swift in Sources */,
 				E742303C25E2F0CA008595CE /* Router.swift in Sources */,
 				E742303425E2E2F5008595CE /* DetailViewController.swift in Sources */,
@@ -415,6 +454,7 @@
 /* Begin XCBuildConfiguration section */
 		E7422FEE25E2BC39008595CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7452814D47B73F9775CE620 /* Pods-BreakingBadCharacterTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -434,6 +474,7 @@
 		};
 		E7422FEF25E2BC39008595CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64EC070292D2F1A7CFC4FB88 /* Pods-BreakingBadCharacterTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

@@ -7,31 +7,57 @@
 
 import UIKit
 import Kingfisher
-class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+import RxSwift
+import RxCocoa
+final class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     private var characters: [MovieCharacter] = []
     private var didSelectModelHandler: (MovieCharacter)->Void = {_ in}
+    private var viewModel: CharactersViewModel = CharactersViewModel()
+    private let disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    convenience init(_ characters: [MovieCharacter], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in}) {
+    convenience init(_ characters: [MovieCharacter], didSelectModelHandler: @escaping (MovieCharacter)->Void = {_ in}, viewModel: CharactersViewModel) {
         self.init(nibName: "CharactersViewController", bundle: nil)
         self.characters = characters
         self.didSelectModelHandler = didSelectModelHandler
+        self.viewModel = viewModel
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        rxBinding()
         tableView.register(CharacterCell.self)
         tableView.dataSource = self
         tableView.delegate = self
     }
     
+    private func rxBinding() {
+        
+        searchBar.rx.text
+            .map {
+                if $0 == nil { return "" }
+                else {return $0!}
+            }
+            .subscribe { [weak self] (query) in
+            
+            self?.viewModel.searchText.accept(query)
+                
+        }.disposed(by: disposeBag)
+
+    }
+    
     private func setupUI() {
         title = "List of Breaking Bad characters"
         
+    }
+    
+    func update(characters: [MovieCharacter]) {
+        self.characters = characters
+        self.tableView?.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
