@@ -52,22 +52,41 @@ class AppFlow {
     
     private func rxbinding() {
         
-        charactersViewModel.searchText
-            .distinctUntilChanged()
-            .withLatestFrom(charactersViewModel.seasionAppearance) {($0, $1)}
-            .subscribe(onNext: { [weak self] (query, season) in
+        Observable.combineLatest(
+            charactersViewModel.searchText
+                                    .distinctUntilChanged(),
+            charactersViewModel.seasionAppearance
+        ).subscribe(onNext: { [weak self] (query, season) in
                 guard let self = self else {return}
+                let allCharacters = self.characters
+                var charactersFilterByName = [MovieCharacter]()
+                
+                
                 if query == "" {
                     self.currCharacters.accept(self.characters)
                 } else {
-                    var characters = [MovieCharacter]()
-                    for character in self.characters {
+                    for character in allCharacters {
                         if character.name.contains(query)  {
-                            characters.append(character)
+                            charactersFilterByName.append(character)
                         }
                     }
-                    self.currCharacters.accept(characters)
                 }
+                
+                var charactersFilterBySeason = [MovieCharacter]()
+                
+                if season == 0 {
+                    charactersFilterBySeason += charactersFilterByName
+                } else {
+                    for character in charactersFilterByName {
+                        let characterSeasionSet = Set(character.appearance)
+                        if characterSeasionSet.contains(season) {
+                            charactersFilterBySeason.append(character)
+                        }
+                    }
+                }
+                
+                
+                self.currCharacters.accept(charactersFilterBySeason)
             })
             .disposed(by: disposeBag)
         

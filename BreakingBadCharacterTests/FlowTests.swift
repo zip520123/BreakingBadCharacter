@@ -61,6 +61,14 @@ class FlowTests: XCTestCase {
 
     }
     
+    func test_searchSomeTextAndSelectSeasonAppearance_getCharactersWhosNameContainsTextWithSeasonAppearance() {
+        let viewModel = CharactersViewModel()
+        let sut = makeSUT(service: LocalService(), viewModel: viewModel)
+        viewModel.searchText.accept("Jane")
+        viewModel.seasionAppearance.accept(1)
+        XCTAssertEqual(sut.currCharacters.value.count, 0)
+    }
+    
     func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = CharactersViewModel()) -> AppFlow {
         let sut = AppFlow(service: service, charactersViewModel: viewModel)
         sut.start()
