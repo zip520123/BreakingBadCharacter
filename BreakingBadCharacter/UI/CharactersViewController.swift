@@ -61,7 +61,9 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     
     func update(characters: [MovieCharacter]) {
         self.characters = characters
-        self.tableView?.reloadData()
+        DispatchQueue.main.async {[weak self] in
+            self?.tableView?.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
