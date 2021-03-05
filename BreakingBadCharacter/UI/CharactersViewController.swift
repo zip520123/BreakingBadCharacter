@@ -18,7 +18,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var seasonSegmented: UISegmentedControl!
     
-    convenience init(_ characters: [MovieCharacter], viewModel: CharactersViewModel) {
+    convenience init(viewModel: CharactersViewModel) {
         self.init(nibName: "CharactersViewController", bundle: nil)
         self.viewModel = viewModel
     }

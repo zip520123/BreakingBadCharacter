@@ -45,7 +45,7 @@ class CharactersViewControllerTests: XCTestCase {
     }
 
     func makeSUT(_ characters: MovieCharacters = [], viewModel: CharactersViewModel = CharactersViewModel() ) -> CharactersViewController {
-        let sut = CharactersViewController(characters, viewModel: viewModel)
+        let sut = CharactersViewController(viewModel: viewModel)
         viewModel.currCharacter.accept(characters)
         _ = sut.view
         return sut
