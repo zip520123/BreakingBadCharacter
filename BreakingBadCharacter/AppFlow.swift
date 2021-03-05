@@ -51,31 +51,45 @@ class AppFlow {
     
     
     private func rxbinding() {
+        let searchName: (String) -> (MovieCharacter) -> Bool = { query in
+            
+            let filter: (MovieCharacter) -> Bool = { character in
+                if query == "" {
+                    return true
+                } else {
+                    return character.name.contains(query)
+                }
+            }
+            
+            return filter
+        }
+        
+        let seasonAppearance: (Int) -> (MovieCharacter) -> Bool = { season in
+            
+            let seasonFilter: (MovieCharacter) -> Bool = { character in
+                if season == 0 {
+                    return true
+                } else {
+                    let characterSeasionSet = Set(character.appearance)
+                    return characterSeasionSet.contains(season)
+                }
+            }
+            
+            return seasonFilter
+        }
         
         Observable.combineLatest(
             charactersViewModel.searchText
                                     .distinctUntilChanged(),
             charactersViewModel.seasionAppearance
-        ).subscribe(onNext: { [weak self] (query, season) in
+        )
+        .subscribe(onNext: { [weak self] (query, season) in
                 guard let self = self else {return}
                 let allCharacters = self.characters
                 
-                let nameFilter: (MovieCharacter) -> Bool = { character in
-                    if query == "" {
-                        return true
-                    } else {
-                        return character.name.contains(query)
-                    }
-                }
+                let nameFilter = searchName(query)
                 
-                let seasonFilter: (MovieCharacter) -> Bool = { character in
-                    if season == 0 {
-                        return true
-                    } else {
-                        let characterSeasionSet = Set(character.appearance)
-                        return characterSeasionSet.contains(season)
-                    }
-                }
+                let seasonFilter = seasonAppearance(season)
             
                 let filterdCharacter = allCharacters
                     .filter(seasonFilter)
