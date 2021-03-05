@@ -30,12 +30,12 @@ class FlowTests: XCTestCase {
     
     func test_charactersInitState() {
         let sut = makeSUT()
-        XCTAssertEqual(sut.currCharacters.value, [])
+        XCTAssertEqual(sut.currAllCharacters.value, [])
     }
     
     func test_charactersLoadFromLocal() {
         let sut = makeSUT(service: LocalService())
-        XCTAssertNotEqual(sut.currCharacters.value.count, 0)
+        XCTAssertNotEqual(sut.currAllCharacters.value.count, 0)
     }
     
     func test_charactersSearchEmptyTest_getAllCharacters() {
@@ -43,10 +43,10 @@ class FlowTests: XCTestCase {
         
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         
-        let allCharactersCount = sut.currCharacters.value.count
+        let allCharactersCount = sut.currAllCharacters.value.count
         viewModel.searchText.accept("")
         
-        XCTAssertEqual(sut.currCharacters.value.count, allCharactersCount)
+        XCTAssertEqual(sut.currAllCharacters.value.count, allCharactersCount)
     }
     
     func test_charactersSearchSomeText_getAllCharactersWhosNameContainsText() {
@@ -55,7 +55,7 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Walter")
         
-        for character in sut.currCharacters.value {
+        for character in sut.currAllCharacters.value {
             XCTAssertTrue(character.name.contains("Walter"))
         }
 
@@ -66,11 +66,11 @@ class FlowTests: XCTestCase {
         
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         
-        let allCharactersCount = sut.currCharacters.value.count
+        let allCharactersCount = sut.currAllCharacters.value.count
         viewModel.searchText.accept("Walter")
         viewModel.searchText.accept("")
         
-        XCTAssertEqual(sut.currCharacters.value.count, allCharactersCount)
+        XCTAssertEqual(sut.currAllCharacters.value.count, allCharactersCount)
     }
     
     func test_searchSomeTextAndSelectSeasonAppearance_getCharactersWhosNameContainsTextWithSeasonAppearance() {
@@ -78,7 +78,7 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Jane")
         viewModel.seasionAppearance.accept(1)
-        XCTAssertEqual(sut.currCharacters.value.count, 0)
+        XCTAssertEqual(sut.currAllCharacters.value.count, 0)
     }
     
     func test_searchSomeTextAndSelectAllSeasonAppearance() {
@@ -86,7 +86,7 @@ class FlowTests: XCTestCase {
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Jane")
         viewModel.seasionAppearance.accept(0)
-        XCTAssertEqual(sut.currCharacters.value.count, 1)
+        XCTAssertEqual(sut.currAllCharacters.value.count, 1)
     }
     
     func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = CharactersViewModel()) -> AppFlow {

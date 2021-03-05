@@ -12,7 +12,7 @@ import RxCocoa
 class AppFlow {
     private let service: Service
     private var characters = [MovieCharacter]()
-    let currCharacters: BehaviorRelay<[MovieCharacter]>
+    let currAllCharacters: BehaviorRelay<[MovieCharacter]>
     private let disposeBag = DisposeBag()
     
     private let charactersViewController: CharactersViewController
@@ -23,7 +23,7 @@ class AppFlow {
     init(service: Service, charactersViewModel: CharactersViewModel) {
         self.service = service
         self.charactersViewModel = charactersViewModel
-        self.currCharacters = charactersViewModel.currFilteredCharacters
+        self.currAllCharacters = charactersViewModel.currFilteredCharacters
         charactersViewController = CharactersViewController(viewModel: charactersViewModel)
         navigationController = UINavigationController(rootViewController: charactersViewController)
         navigationControllerRouter = NavigationControllerRouter(navigationController)
@@ -36,7 +36,7 @@ class AppFlow {
             return
         }
         self.characters = characters
-        currCharacters.accept(characters)
+        currAllCharacters.accept(characters)
     }
     
     func start() {
@@ -94,7 +94,7 @@ class AppFlow {
             guard let self = self else {return []}
             return movieCharacterFilterByNameAndSeason(name, season, self.characters)
         })
-        .bind(to: currCharacters)
+        .bind(to: currAllCharacters)
         .disposed(by: disposeBag)
         
         charactersViewModel.didSelectCharacter.subscribe {[weak self] (character) in
