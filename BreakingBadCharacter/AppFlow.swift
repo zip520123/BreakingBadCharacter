@@ -10,9 +10,7 @@ import RxSwift
 import RxCocoa
 
 class AppFlow {
-    let currAllCharacters: BehaviorRelay<[MovieCharacter]>
     private let disposeBag = DisposeBag()
-    
     private let charactersViewController: CharactersViewController
     private let navigationControllerRouter: NavigationControllerRouter
     let navigationController: UINavigationController
@@ -20,7 +18,6 @@ class AppFlow {
     
     init(charactersViewModel: CharactersViewModel) {
         self.charactersViewModel = charactersViewModel
-        self.currAllCharacters = charactersViewModel.currAllCharacters
         charactersViewController = CharactersViewController(viewModel: charactersViewModel)
         navigationController = UINavigationController(rootViewController: charactersViewController)
         navigationControllerRouter = NavigationControllerRouter(navigationController)
