@@ -68,8 +68,6 @@ class AppFlow {
                     }
                 }
                 
-                let charactersFilterByName = allCharacters.filter(nameFilter)
-                
                 let seasonFilter: (MovieCharacter) -> Bool = { character in
                     if season == 0 {
                         return true
@@ -78,9 +76,13 @@ class AppFlow {
                         return characterSeasionSet.contains(season)
                     }
                 }
-                let charactersFilterBySeason = charactersFilterByName.filter(seasonFilter)
-                
-                self.currCharacters.accept(charactersFilterBySeason)
+            
+                let filterdCharacter = allCharacters
+                    .filter(seasonFilter)
+                    .filter(nameFilter)
+                    
+            
+                self.currCharacters.accept(filterdCharacter)
             })
             .disposed(by: disposeBag)
         
