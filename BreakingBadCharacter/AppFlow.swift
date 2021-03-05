@@ -68,19 +68,15 @@ class AppFlow {
                     }
                 }
                 
-                var charactersFilterBySeason = [MovieCharacter]()
                 
-                if season == 0 {
-                    charactersFilterBySeason += charactersFilterByName
-                } else {
-                    for character in charactersFilterByName {
+                let charactersFilterBySeason = charactersFilterByName.filter { (character) -> Bool in
+                    if season == 0 {
+                        return true
+                    } else {
                         let characterSeasionSet = Set(character.appearance)
-                        if characterSeasionSet.contains(season) {
-                            charactersFilterBySeason.append(character)
-                        }
+                        return characterSeasionSet.contains(season)
                     }
                 }
-                
                 
                 self.currCharacters.accept(charactersFilterBySeason)
             })
