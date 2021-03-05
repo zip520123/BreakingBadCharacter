@@ -60,16 +60,17 @@ class AppFlow {
                 guard let self = self else {return}
                 let allCharacters = self.characters
                 
-                let charactersFilterByName = allCharacters.filter { (charcater) -> Bool in
+                let nameFilter: (MovieCharacter) -> Bool = { character in
                     if query == "" {
                         return true
                     } else {
-                        return charcater.name.contains(query)
+                        return character.name.contains(query)
                     }
                 }
                 
+                let charactersFilterByName = allCharacters.filter(nameFilter)
                 
-                let charactersFilterBySeason = charactersFilterByName.filter { (character) -> Bool in
+                let seasonFilter: (MovieCharacter) -> Bool = { character in
                     if season == 0 {
                         return true
                     } else {
@@ -77,6 +78,7 @@ class AppFlow {
                         return characterSeasionSet.contains(season)
                     }
                 }
+                let charactersFilterBySeason = charactersFilterByName.filter(seasonFilter)
                 
                 self.currCharacters.accept(charactersFilterBySeason)
             })
