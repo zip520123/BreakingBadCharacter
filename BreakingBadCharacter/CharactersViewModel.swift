@@ -67,11 +67,9 @@ struct CharactersViewModel {
 
         Observable.combineLatest(
             searchText.skip(1).distinctUntilChanged(),
-            seasionAppearance
-        ).withLatestFrom(currAllCharacters) {(arg0, characters) in
-            let (name, season) = arg0
-            return (name, season, characters)
-        }
+            seasionAppearance,
+            currAllCharacters
+        )
         .map(movieCharacterFilterByNameAndSeason)
         .bind(to: currFilteredCharacters)
         .disposed(by: disposeBag)
