@@ -23,7 +23,7 @@ class AppFlow {
     init(service: Service, charactersViewModel: CharactersViewModel) {
         self.service = service
         self.charactersViewModel = charactersViewModel
-        self.currAllCharacters = charactersViewModel.currFilteredCharacters
+        self.currAllCharacters = charactersViewModel.currAllCharacters
         charactersViewController = CharactersViewController(viewModel: charactersViewModel)
         navigationController = UINavigationController(rootViewController: charactersViewController)
         navigationControllerRouter = NavigationControllerRouter(navigationController)
