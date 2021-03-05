@@ -59,16 +59,12 @@ class AppFlow {
         ).subscribe(onNext: { [weak self] (query, season) in
                 guard let self = self else {return}
                 let allCharacters = self.characters
-                var charactersFilterByName = [MovieCharacter]()
                 
-                
-                if query == "" {
-                    charactersFilterByName += allCharacters
-                } else {
-                    for character in allCharacters {
-                        if character.name.contains(query)  {
-                            charactersFilterByName.append(character)
-                        }
+                let charactersFilterByName = allCharacters.filter { (charcater) -> Bool in
+                    if query == "" {
+                        return true
+                    } else {
+                        return charcater.name.contains(query)
                     }
                 }
                 
