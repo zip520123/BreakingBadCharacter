@@ -36,6 +36,59 @@ class CharactersViewModelTests: XCTestCase {
         XCTAssertEqual(stateSpy.seasonSets, [0,1])
     }
     
+    func test_loadAllCharactersFromLocal() {
+        let sut = makeSUT()
+        XCTAssertNotEqual(sut.currAllCharacters.value.count, 0)
+        
+    }
+    
+    func test_charactersSearchEmptyTest_getAllCharacters() {
+        let sut = makeSUT()
+
+        let allCharactersCount = sut.currAllCharacters.value.count
+        sut.searchText.accept("")
+        
+        XCTAssertEqual(sut.currFilteredCharacters.value.count, allCharactersCount)
+    }
+    
+    func test_charactersSearchSomeText_getAllCharactersWhosNameContainsText() {
+        let sut = makeViewModel(service: LocalService())
+        sut.searchText.accept("Walter")
+        
+        for character in sut.currFilteredCharacters.value {
+            XCTAssertTrue(character.name.contains("Walter"))
+        }
+        
+    }
+    
+    func test_charactersSearchSomeTextAndSearchEmpty_getAllCharacters() {
+
+        let sut = makeViewModel(service: LocalService())
+        
+        let allCharactersCount = sut.currAllCharacters.value.count
+        sut.searchText.accept("Walter")
+        sut.searchText.accept("")
+        
+        XCTAssertEqual(sut.currFilteredCharacters.value.count, allCharactersCount)
+    }
+    
+    func test_searchSomeTextAndSelectSeasonAppearance_getCharactersWhosNameContainsTextWithSeasonAppearance() {
+        
+        let sut = makeViewModel(service: LocalService())
+        sut.searchText.accept("Jane")
+        sut.seasionAppearance.accept(1)
+        XCTAssertEqual(sut.currFilteredCharacters.value.count, 0)
+    }
+    
+    
+//    func test_searchSomeTextAndSelectAllSeasonAppearance() {
+//        let sut = makeViewModel(service: LocalService())
+//        sut.searchText.accept("Jane")
+//        sut.seasionAppearance.accept(0)
+//        XCTAssertEqual(sut.currFilteredCharacters.value.count, 1)
+//    }
+    
+    
     private class StateSpy {
         private(set) var texts: [String] = []
         private(set) var seasonSets: [Int] = []
@@ -48,6 +101,12 @@ class CharactersViewModelTests: XCTestCase {
                 self?.seasonSets.append(set)
             } .disposed(by: disposeBag)
         }
+    }
+    
+    func makeSUT(service: Service = LocalService()) -> CharactersViewModel {
+        let sut = CharactersViewModel(service: service)
+        sut.start()
+        return sut
     }
 }
 
