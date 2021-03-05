@@ -78,6 +78,13 @@ class AppFlow {
             return seasonFilter
         }
         
+        let movieCharacterFilterByNameAndSeason: (String, Int, [MovieCharacter]) -> [MovieCharacter] = {
+            name, season, characters in
+            return characters
+                .filter(searchName(name))
+                .filter(seasonAppearance(season))
+        }
+        
         Observable.combineLatest(
             charactersViewModel.searchText
                                     .distinctUntilChanged(),
@@ -87,16 +94,9 @@ class AppFlow {
                 guard let self = self else {return}
                 let allCharacters = self.characters
                 
-                let nameFilter = searchName(query)
-                
-                let seasonFilter = seasonAppearance(season)
+                let filterdCharacters = movieCharacterFilterByNameAndSeason(query, season, allCharacters)
             
-                let filterdCharacter = allCharacters
-                    .filter(seasonFilter)
-                    .filter(nameFilter)
-                    
-            
-                self.currCharacters.accept(filterdCharacter)
+                self.currCharacters.accept(filterdCharacters)
             })
             .disposed(by: disposeBag)
         
