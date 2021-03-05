@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 final class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    private var characters: [MovieCharacter] = []
     private var viewModel: CharactersViewModel = CharactersViewModel()
     private let disposeBag = DisposeBag()
     
@@ -21,7 +20,6 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     
     convenience init(_ characters: [MovieCharacter], viewModel: CharactersViewModel) {
         self.init(nibName: "CharactersViewController", bundle: nil)
-        self.characters = characters
         self.viewModel = viewModel
     }
     
@@ -52,27 +50,25 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
                 
         }.disposed(by: disposeBag)
 
+        viewModel.currCharacter.subscribe {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }.disposed(by: disposeBag)
+
     }
     
     private func setupUI() {
         title = "List of Breaking Bad characters"
-        
-    }
-    
-    func update(characters: [MovieCharacter]) {
-        self.characters = characters
-        DispatchQueue.main.async {[weak self] in
-            self?.tableView?.reloadData()
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return viewModel.currCharacter.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(CharacterCell.self)!
-        let character = characters[indexPath.row]
+        let character = viewModel.currCharacter.value[indexPath.row]
         cell.nameLabel.text = character.name
         if let url = URL(string: character.img) {
             cell.photoView.kf.setImage(with: url, options: [
@@ -91,7 +87,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let character = characters[indexPath.row]
+        let character = viewModel.currCharacter.value[indexPath.row]
         viewModel.didSelectCharacter.accept(character)
     }
     
