@@ -89,16 +89,12 @@ class AppFlow {
             charactersViewModel.searchText
                                     .distinctUntilChanged(),
             charactersViewModel.seasionAppearance
-        )
-        .subscribe(onNext: { [weak self] (query, season) in
-                guard let self = self else {return}
-                let allCharacters = self.characters
-                
-                let filterdCharacters = movieCharacterFilterByNameAndSeason(query, season, allCharacters)
-            
-                self.currCharacters.accept(filterdCharacters)
-            })
-            .disposed(by: disposeBag)
+        ).map({ [weak self]  (name, season) -> [MovieCharacter] in
+            guard let self = self else {return []}
+            return movieCharacterFilterByNameAndSeason(name, season, self.characters)
+        })
+        .bind(to: currCharacters)
+        .disposed(by: disposeBag)
         
         currCharacters.subscribe {[weak self] (characters) in
             self?.charactersViewController.update(characters: characters)
