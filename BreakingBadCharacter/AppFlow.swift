@@ -21,7 +21,7 @@ class AppFlow {
     private let charactersViewModel: CharactersViewModel
     
     init(service: Service, charactersViewModel: CharactersViewModel) {
-        self.service = service
+        self.service = charactersViewModel.service
         self.charactersViewModel = charactersViewModel
         self.currAllCharacters = charactersViewModel.currAllCharacters
         charactersViewController = CharactersViewController(viewModel: charactersViewModel)
