@@ -96,10 +96,6 @@ class AppFlow {
         .bind(to: currCharacters)
         .disposed(by: disposeBag)
         
-        currCharacters.subscribe {[weak self] (characters) in
-            self?.charactersViewController.update(characters: characters)
-        }.disposed(by: disposeBag)
-        
         charactersViewModel.didSelectCharacter.subscribe {[weak self] (character) in
             self?.didSelectModelHandler(character)
         }.disposed(by: disposeBag)
