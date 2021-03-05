@@ -28,18 +28,6 @@ class FlowTests: XCTestCase {
         XCTAssertTrue(isLoaded)
     }
     
-    func test_charactersInitState() {
-        let service = MockService()
-        let viewModel = makeViewModel(service: service)
-        let sut = AppFlow(charactersViewModel: viewModel)
-        XCTAssertEqual(sut.currAllCharacters.value, [])
-    }
-    
-    func test_charactersLoadFromLocal() {
-        let sut = makeSUT(service: LocalService())
-        XCTAssertNotEqual(sut.currAllCharacters.value.count, 0)
-    }
-    
     func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = makeViewModel()) -> AppFlow {
         let sut = AppFlow(charactersViewModel: viewModel)
         sut.start()

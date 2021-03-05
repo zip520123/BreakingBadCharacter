@@ -48,51 +48,6 @@ class AppFlow {
     
     
     private func rxbinding() {
-        let searchName: (String) -> (MovieCharacter) -> Bool = { query in
-            
-            let filter: (MovieCharacter) -> Bool = { character in
-                if query == "" {
-                    return true
-                } else {
-                    return character.name.contains(query)
-                }
-            }
-            
-            return filter
-        }
-        
-        let seasonAppearance: (Int) -> (MovieCharacter) -> Bool = { season in
-            
-            let seasonFilter: (MovieCharacter) -> Bool = { character in
-                if season == 0 {
-                    return true
-                } else {
-                    let characterSeasionSet = Set(character.appearance)
-                    return characterSeasionSet.contains(season)
-                }
-            }
-            
-            return seasonFilter
-        }
-        
-        let movieCharacterFilterByNameAndSeason: (String, Int, [MovieCharacter]) -> [MovieCharacter] = {
-            name, season, characters in
-            return characters
-                .filter(searchName(name))
-                .filter(seasonAppearance(season))
-        }
-        
-        Observable.combineLatest(
-            charactersViewModel.searchText
-                                    .distinctUntilChanged(),
-            charactersViewModel.seasionAppearance
-        ).withLatestFrom(charactersViewModel.currAllCharacters) {(arg0, characters) in
-            let (name, season) = arg0
-            return (name, season, characters)
-        }
-        .map(movieCharacterFilterByNameAndSeason)
-        .bind(to: charactersViewModel.currFilteredCharacters)
-        .disposed(by: disposeBag)
         
         charactersViewModel.didSelectCharacter.subscribe {[weak self] (character) in
             self?.didSelectModelHandler(character)
