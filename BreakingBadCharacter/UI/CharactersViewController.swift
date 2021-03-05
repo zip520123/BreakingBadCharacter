@@ -50,7 +50,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
                 
         }.disposed(by: disposeBag)
 
-        viewModel.currCharacter.subscribe {[weak self] _ in
+        viewModel.currFilteredCharacters.subscribe {[weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -63,12 +63,12 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.currCharacter.value.count
+        return viewModel.currFilteredCharacters.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(CharacterCell.self)!
-        let character = viewModel.currCharacter.value[indexPath.row]
+        let character = viewModel.currFilteredCharacters.value[indexPath.row]
         cell.nameLabel.text = character.name
         if let url = URL(string: character.img) {
             cell.photoView.kf.setImage(with: url, options: [
@@ -87,7 +87,7 @@ final class CharactersViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let character = viewModel.currCharacter.value[indexPath.row]
+        let character = viewModel.currFilteredCharacters.value[indexPath.row]
         viewModel.didSelectCharacter.accept(character)
     }
     
