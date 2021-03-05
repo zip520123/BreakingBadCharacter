@@ -31,7 +31,7 @@ class FlowTests: XCTestCase {
     func test_charactersInitState() {
         let service = MockService()
         let viewModel = makeViewModel(service: service)
-        let sut = AppFlow(service: service, charactersViewModel: viewModel)
+        let sut = AppFlow(charactersViewModel: viewModel)
         XCTAssertEqual(sut.currAllCharacters.value, [])
     }
     
@@ -92,7 +92,7 @@ class FlowTests: XCTestCase {
     }
     
     func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = makeViewModel()) -> AppFlow {
-        let sut = AppFlow(service: service, charactersViewModel: viewModel)
+        let sut = AppFlow(charactersViewModel: viewModel)
         sut.start()
         return sut
     }
