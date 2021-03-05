@@ -92,7 +92,7 @@ class AppFlow {
             guard let self = self else {return []}
             return movieCharacterFilterByNameAndSeason(name, season, self.characters)
         })
-        .bind(to: currAllCharacters)
+        .bind(to: charactersViewModel.currFilteredCharacters)
         .disposed(by: disposeBag)
         
         charactersViewModel.didSelectCharacter.subscribe {[weak self] (character) in
