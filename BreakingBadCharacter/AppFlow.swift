@@ -40,7 +40,7 @@ class AppFlow {
     }
     
     func start() {
-        service.loadData {[weak self] (characters, error) in
+        charactersViewModel.service.loadData {[weak self] (characters, error) in
             guard let self = self else {return}
             self.dataHandler(characters, error: error)
         }
