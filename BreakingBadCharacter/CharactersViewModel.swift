@@ -30,7 +30,7 @@ struct CharactersViewModel {
         }
     }
     
-    let searchName: (String) -> (MovieCharacter) -> Bool = { query in
+    private let searchName: (String) -> (MovieCharacter) -> Bool = { query in
         
         let filter: (MovieCharacter) -> Bool = { character in
             if query == "" {
@@ -43,7 +43,7 @@ struct CharactersViewModel {
         return filter
     }
     
-    let seasonAppearance: (Int) -> (MovieCharacter) -> Bool = { season in
+    private let seasonAppearance: (Int) -> (MovieCharacter) -> Bool = { season in
         
         let seasonFilter: (MovieCharacter) -> Bool = { character in
             if season == 0 {
@@ -57,7 +57,7 @@ struct CharactersViewModel {
         return seasonFilter
     }
     
-    func movieCharacterFilterByNameAndSeason(name: String, season: Int, characters: [MovieCharacter]) -> [MovieCharacter] {
+    private func movieCharacterFilterByNameAndSeason(name: String, season: Int, characters: [MovieCharacter]) -> [MovieCharacter] {
         return characters
             .filter(searchName(name))
             .filter(seasonAppearance(season))
