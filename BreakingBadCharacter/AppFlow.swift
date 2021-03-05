@@ -27,19 +27,8 @@ class AppFlow {
         rxbinding()
     }
     
-    private func dataHandler(_ characters: [MovieCharacter], error: Error?) {
-        guard error == nil else {
-            print(error!.localizedDescription)
-            return
-        }
-        currAllCharacters.accept(characters)
-    }
-    
     func start() {
-        charactersViewModel.service.loadData {[weak self] (characters, error) in
-            guard let self = self else {return}
-            self.dataHandler(characters, error: error)
-        }
+        charactersViewModel.start()
     }
     
     private func didSelectModelHandler(_ character: MovieCharacter) {
