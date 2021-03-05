@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 
 class AppFlow {
-    private var characters = [MovieCharacter]()
     let currAllCharacters: BehaviorRelay<[MovieCharacter]>
     private let disposeBag = DisposeBag()
     
@@ -33,7 +32,6 @@ class AppFlow {
             print(error!.localizedDescription)
             return
         }
-        self.characters = characters
         currAllCharacters.accept(characters)
     }
     
@@ -88,10 +86,11 @@ class AppFlow {
             charactersViewModel.searchText
                                     .distinctUntilChanged(),
             charactersViewModel.seasionAppearance
-        ).map({ [weak self]  (name, season) -> [MovieCharacter] in
-            guard let self = self else {return []}
-            return movieCharacterFilterByNameAndSeason(name, season, self.characters)
-        })
+        ).withLatestFrom(charactersViewModel.currAllCharacters) {(arg0, characters) in
+            let (name, season) = arg0
+            return (name, season, characters)
+        }
+        .map(movieCharacterFilterByNameAndSeason)
         .bind(to: charactersViewModel.currFilteredCharacters)
         .disposed(by: disposeBag)
         
