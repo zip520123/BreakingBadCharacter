@@ -32,7 +32,7 @@ class CharactersViewControllerTests: XCTestCase {
     func test_viewDidLoad_detectWhenDidSelectModel() {
         var isSelect = false
         let disposeBag = DisposeBag()
-        let viewModel = CharactersViewModel()
+        let viewModel = makeViewModel()
         
         viewModel.didSelectCharacter.subscribe { (character) in
             isSelect = true
@@ -44,7 +44,7 @@ class CharactersViewControllerTests: XCTestCase {
         XCTAssertTrue(isSelect)
     }
 
-    func makeSUT(_ characters: MovieCharacters = [], viewModel: CharactersViewModel = CharactersViewModel() ) -> CharactersViewController {
+    func makeSUT(_ characters: MovieCharacters = [], viewModel: CharactersViewModel = makeViewModel() ) -> CharactersViewController {
         let sut = CharactersViewController(viewModel: viewModel)
         viewModel.currFilteredCharacters.accept(characters)
         _ = sut.view

@@ -13,4 +13,8 @@ struct CharactersViewModel {
     let didSelectCharacter: PublishRelay<MovieCharacter> = PublishRelay<MovieCharacter>()
     let currFilteredCharacters: BehaviorRelay<[MovieCharacter]> = BehaviorRelay<[MovieCharacter]>(value: [])
     let currAllCharacters: BehaviorRelay<[MovieCharacter]> = BehaviorRelay<[MovieCharacter]>(value: [])
+    let service: Service
+    init(service: Service) {
+        self.service = service
+    }
 }

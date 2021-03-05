@@ -39,7 +39,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_charactersSearchEmptyTest_getAllCharacters() {
-        let viewModel = CharactersViewModel()
+        let viewModel = makeViewModel()
         
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         
@@ -50,7 +50,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_charactersSearchSomeText_getAllCharactersWhosNameContainsText() {
-        let viewModel = CharactersViewModel()
+        let viewModel = makeViewModel()
 
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Walter")
@@ -62,7 +62,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_charactersSearchSomeTextAndSearchEmpty_getAllCharacters() {
-        let viewModel = CharactersViewModel()
+        let viewModel = makeViewModel()
         
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         
@@ -74,7 +74,7 @@ class FlowTests: XCTestCase {
     }
     
     func test_searchSomeTextAndSelectSeasonAppearance_getCharactersWhosNameContainsTextWithSeasonAppearance() {
-        let viewModel = CharactersViewModel()
+        let viewModel = makeViewModel()
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Jane")
         viewModel.seasionAppearance.accept(1)
@@ -82,14 +82,14 @@ class FlowTests: XCTestCase {
     }
     
     func test_searchSomeTextAndSelectAllSeasonAppearance() {
-        let viewModel = CharactersViewModel()
+        let viewModel = makeViewModel()
         let sut = makeSUT(service: LocalService(), viewModel: viewModel)
         viewModel.searchText.accept("Jane")
         viewModel.seasionAppearance.accept(0)
         XCTAssertEqual(sut.currAllCharacters.value.count, 1)
     }
     
-    func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = CharactersViewModel()) -> AppFlow {
+    func makeSUT(service: Service = MockService(), viewModel: CharactersViewModel = makeViewModel()) -> AppFlow {
         let sut = AppFlow(service: service, charactersViewModel: viewModel)
         sut.start()
         return sut

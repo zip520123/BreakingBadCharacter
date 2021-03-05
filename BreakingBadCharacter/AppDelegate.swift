@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        appFlow = AppFlow(service: ApiService(), charactersViewModel: CharactersViewModel())
+        let service = ApiService()
+        appFlow = AppFlow(service: service, charactersViewModel: CharactersViewModel(service: service))
         window?.rootViewController = appFlow?.navigationController
         window?.makeKeyAndVisible()
         
